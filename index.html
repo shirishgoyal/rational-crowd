@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html ng-app="project">
+<head>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Rational Decisions</title>
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+
+        .selectable {
+            width: 700px;
+        }
+
+        .selected, input.selected {
+        }
+    </style>
+</head>
+<body>
+<div class="container" ng-controller="ProjectCtrl as ctrl">
+
+    <div ng-show="ctrl.isMobile" ng-cloak="">
+        <div class="jumbotron" style="margin-top: 100px">
+            <h1>Rational Decisions</h1>
+            <p>This survey works only with desktops. Please use a desktop to launch it again.</p>
+        </div>
+    </div>
+
+    <div ng-show="!ctrl.isMobile" ng-cloak="">
+        <div ng-show="ctrl.stage==0">
+            <div class="jumbotron" style="margin-top: 100px">
+                <h1>Rational Decisions</h1>
+                <p>This data is being collected only for
+                    academic research purposes and won't be shared with any other entities.</p>
+                <p><a class="btn btn-primary btn-lg" ng-click="ctrl.submit();" role="button">Start</a></p>
+            </div>
+        </div>
+
+        <div ng-show="ctrl.stage==1">
+            <h3>Rational Decisions</h3>
+            <p>Please provide below information before proceeding with a short survey.</p>
+            <form name="general_form" ng-submit="ctrl.submit()">
+                <fieldset>
+
+                    <!-- General -->
+                    <legend>General Information</legend>
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="control-label selectable" for="age">What is your age?</label>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="age" id="age-0" value="18-19"
+                                       ng-model="ctrl.experiment.stage1.age" ng-required="true">
+                                18-19 years
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="age-1">
+                                <input class="selectable" type="radio" name="age" id="age-1" value="20-29"
+                                       ng-model="ctrl.experiment.stage1.age" ng-required="true">
+                                20-29 years
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="age-2">
+                                <input class="selectable" type="radio" name="age" id="age-2" value="30-39"
+                                       ng-model="ctrl.experiment.stage1.age" ng-required="true">
+                                30-39 years
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="age-3">
+                                <input class="selectable" type="radio" name="age" id="age-3" value="40-49"
+                                       ng-model="ctrl.experiment.stage1.age" ng-required="true">
+                                40-49 years
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="age-4">
+                                <input class="selectable" type="radio" name="age" id="age-4" value="50-59"
+                                       ng-model="ctrl.experiment.stage1.age" ng-required="true">
+                                50-59 years
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="age-5">
+                                <input class="selectable" type="radio" name="age" id="age-5" value="60- years"
+                                       ng-model="ctrl.experiment.stage1.age" ng-required="true">
+                                60 and above years
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="control-label selectable" for="ethnicity">Please specify your ethnicity origin (or
+                            race)</label>
+
+                        <div class="radio">
+                            <label for="ethnicity-0">
+                                <input class="selectable" type="radio" name="ethnicity" id="ethnicity-0" value="White"
+                                       ng-model="ctrl.experiment.stage1.ethnicity" ng-required="true">
+                                White
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ethnicity-1">
+                                <input class="selectable" type="radio" name="ethnicity" id="ethnicity-1"
+                                       value="Hispanic or Latino" ng-model="ctrl.experiment.stage1.ethnicity"
+                                       ng-required="true">
+                                Hispanic or Latino
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ethnicity-2">
+                                <input class="selectable" type="radio" name="ethnicity" id="ethnicity-2"
+                                       value="Black or African American" ng-model="ctrl.experiment.stage1.ethnicity"
+                                       ng-required="true">
+                                Black or African American
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ethnicity-3">
+                                <input class="selectable" type="radio" name="ethnicity" id="ethnicity-3"
+                                       value="Native American or American Indian"
+                                       ng-model="ctrl.experiment.stage1.ethnicity" ng-required="true">
+                                Native American or American Indian
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ethnicity-4">
+                                <input class="selectable" type="radio" name="ethnicity" id="ethnicity-4"
+                                       value="Asian / Pacific Islander" ng-model="ctrl.experiment.stage1.ethnicity"
+                                       ng-required="true">
+                                Asian / Pacific Islander
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="ethnicity-5">
+                                <input class="selectable" type="radio" name="ethnicity" id="ethnicity-5" value="Other"
+                                       ng-model="ctrl.experiment.stage1.ethnicity" ng-required="true">
+                                Other
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="control-label selectable" for="education">What is the highest degree or level of
+                            education
+                            you have completed? *If currently enrolled, highest degree received.</label>
+
+                        <div class="radio">
+                            <label for="education-0">
+                                <input class="selectable" type="radio" name="education" id="education-0"
+                                       value="No schooling completed" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                No schooling completed
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-1">
+                                <input class="selectable" type="radio" name="education" id="education-1"
+                                       value="Nursery school to 8th grade" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Nursery school to 8th grade
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-2">
+                                <input class="selectable" type="radio" name="education" id="education-2"
+                                       value="Some high school, no diploma" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Some high school, no diploma
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-3">
+                                <input class="selectable" type="radio" name="education" id="education-3"
+                                       value="High school graduate, diploma or the equivalent"
+                                       ng-model="ctrl.experiment.stage1.education" ng-required="true">
+                                High school graduate, diploma or the equivalent (for example: GED)
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-4">
+                                <input class="selectable" type="radio" name="education" id="education-4"
+                                       value="Some college credit, no degree"
+                                       ng-model="ctrl.experiment.stage1.education" ng-required="true">
+                                Some college credit, no degree
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-5">
+                                <input class="selectable" type="radio" name="education" id="education-5"
+                                       value="Trade/technical/vocational training"
+                                       ng-model="ctrl.experiment.stage1.education" ng-required="true">
+                                Trade/technical/vocational training
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-6">
+                                <input class="selectable" type="radio" name="education" id="education-6"
+                                       value="Associate degree" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Associate degree
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-7">
+                                <input class="selectable" type="radio" name="education" id="education-7"
+                                       value="Bachelor’s degree" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Bachelor’s degree
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-8">
+                                <input class="selectable" type="radio" name="education" id="education-8"
+                                       value="Master’s degree" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Master’s degree
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-9">
+                                <input class="selectable" type="radio" name="education" id="education-9"
+                                       value="Professional degree" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Professional degree
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="education-10">
+                                <input class="selectable" type="radio" name="education" id="education-10"
+                                       value="Doctorate degree" ng-model="ctrl.experiment.stage1.education"
+                                       ng-required="true">
+                                Doctorate degree
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="control-label selectable" for="gender">What is your gender?</label>
+
+                        <div class="radio">
+                            <label for="gender-0">
+                                <input class="selectable" type="radio" name="gender" id="gender-0" value="M"
+                                       ng-model="ctrl.experiment.stage1.gender" ng-required="true">
+                                Male
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="gender-1">
+                                <input class="selectable" type="radio" name="gender" id="gender-1" value="F"
+                                       ng-model="ctrl.experiment.stage1.gender" ng-required="true">
+                                Female
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <!-- Multiple Radios -->
+                    <div class="form-group">
+                        <label class="control-label selectable" for="culture">How would you best describe your cultural
+                            background?</label>
+
+                        <div class="radio">
+                            <label for="culture-0">
+                                <input class="selectable" type="radio" name="culture" id="culture-0" value="Africa"
+                                       ng-model="ctrl.experiment.stage1.culture" ng-required="true">
+                                Africa
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="culture-1">
+                                <input class="selectable" type="radio" name="culture" id="culture-1" value="Asia"
+                                       ng-model="ctrl.experiment.stage1.culture" ng-required="true">
+                                Asia
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="culture-2">
+                                <input class="selectable" type="radio" name="culture" id="culture-2" value="Europe"
+                                       ng-model="ctrl.experiment.stage1.culture" ng-required="true">
+                                Europe
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="culture-3">
+                                <input class="selectable" type="radio" name="culture" id="culture-3"
+                                       value="North America" ng-model="ctrl.experiment.stage1.culture"
+                                       ng-required="true">
+                                North America
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label for="culture-4">
+                                <input class="selectable" type="radio" name="culture" id="culture-4"
+                                       value="South America" ng-model="ctrl.experiment.stage1.culture"
+                                       ng-required="true">
+                                South America
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary selectable" ng-disabled="general_form.$invalid">Next
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div ng-show="ctrl.stage==2">
+            <h3>Rational Decisions</h3>
+            <p>Please complete below short survey.</p>
+            <p>Question 1 of 4</p>
+            <form class="form" name="attention_form" ng-submit="ctrl.submit()">
+                <fieldset>
+                    <legend>Survey</legend>
+                    <div class="form-group">
+                        <label class="control-label selectable" for="desirable_quality">Which three qualities listed
+                            below would
+                            you say are the most desirable for a child to have? *
+                        </label>
+
+                        <div class="checkbox">
+                            <label for="desirable_quality-0">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-0" value="1"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q1">
+                                That he has good manners
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-1">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-1" value="2"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q2">
+                                That he tried hard to succeed
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-2">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-2" value="3"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q3">
+                                That he is honest
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-3">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-3" value="4"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q4">
+                                That he is neat and clean
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-4">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-4" value="5"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q5">
+                                That he has good sense and sound judgment
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-5">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-5" value="6"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q6">
+                                That he has self-control
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-6">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-6" value="7"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q7">
+                                That he acts like a boy or she acts like a girl
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-7">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-7" value="8"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q8">
+                                That he gets along well with other children
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-8">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-8" value="9"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q9">
+                                That he obeys his parents well
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-9">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-9" value="10"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q10">
+                                That he is responsible
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label for="desirable_quality-10">
+                                <input class="selectable" type="checkbox" name="desirable_quality"
+                                       id="desirable_quality-10" value="11"
+                                       ng-model="ctrl.experiment.stage2.desirable_quality.q11">
+                                That he is considerate of others
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary selectable" ng-disabled="attention_form.$invalid">
+                        Submit
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div ng-show="ctrl.stage==3">
+            <h3>Rational Decisions</h3>
+            <p>Question 2 of 4</p>
+            <form class="form" name="attention_form1" ng-submit="ctrl.submit()">
+                <fieldset>
+                    <legend>Survey</legend>
+                    <div class="form-group">
+                        <label class="control-label selectable">
+                            Some say individuals are more to blame than social conditions for crime and lawlessness in
+                            this country. Others say the contrary—social conditions are more to blame than individuals
+                            for crime and lawlessness in this country. Which one of these two statements comes closest
+                            to your opinion on this issue?
+                        </label>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="crime"
+                                       value="Individuals are more to blame" ng-model="ctrl.experiment.stage3.crime"
+                                       ng-required="true">
+                                Individuals are more to blame
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="crime"
+                                       value="Social conditions are more to blame"
+                                       ng-model="ctrl.experiment.stage3.crime" ng-required="true">
+                                Social conditions are more to blame
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary selectable" ng-disabled="attention_form1.$invalid">
+                        Submit
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div ng-show="ctrl.stage==4">
+            <h3>Rational Decisions</h3>
+            <p>Question 3 of 4</p>
+            <form class="form" name="attention_form2" ng-submit="ctrl.submit()">
+                <fieldset>
+                    <legend>Survey</legend>
+                    <div class="form-group">
+                        <label class="control-label selectable">
+                            Next, we would like you to think about the amount of trust you have that the police officers
+                            in your area will always do what is right. Would you say you have
+                        </label>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="police" value="A great deal of trust"
+                                       ng-model="ctrl.experiment.stage4.police" ng-required="true">
+                                  A great deal of trust
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="police" value="A moderate amount of trust"
+                                       ng-model="ctrl.experiment.stage4.police" ng-required="true">
+                                  A moderate amount of trust
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="police"
+                                       value="Equal amounts of trust and distrust"
+                                       ng-model="ctrl.experiment.stage4.police" ng-required="true">
+                                  Equal amounts of trust and distrust
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="police"
+                                       value="A moderate amount of distrust" ng-model="ctrl.experiment.stage4.police"
+                                       ng-required="true">
+                                  A moderate amount of distrust
+                            </label>
+                        </div>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="police" value="A great deal of distrust"
+                                       ng-model="ctrl.experiment.stage4.police" ng-required="true">
+                                  A great deal of distrust
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary selectable" ng-disabled="attention_form2.$invalid">
+                        Submit
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div ng-show="ctrl.stage==5">
+            <h3>Rational Decisions</h3>
+            <p>Question 4 of 4</p>
+            <form class="form" name="attention_form3" ng-submit="ctrl.submit()">
+                <fieldset>
+                    <legend>Survey</legend>
+                    <div class="form-group">
+                        <label class="control-label selectable">
+                            In your opinion, should government (federal, state, or local) have some responsibility for
+                            preventing the breakdown of morality, or should private organizations and individuals be
+                            entirely responsible for preventing the breakdown of morality?
+                        </label>
+
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="morality" value="Government is responsible"
+                                       ng-model="ctrl.experiment.stage5.morality" ng-required="true">
+                                Government is responsible
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input class="selectable" type="radio" name="morality"
+                                       value="Private organizations and individuals are responsible"
+                                       ng-model="ctrl.experiment.stage5.morality" ng-required="true">
+                                Private organizations and individuals are responsible
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn btn-primary selectable" ng-disabled="attention_form3.$invalid">
+                        Submit
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+
+        <div ng-show="ctrl.stage==6">
+            <div class="jumbotron" style="margin-top: 100px">
+                <h1>Rational Decisions</h1>
+                <p>Thanks for submitting your response. The survey is finished now.</p>
+            </div>
+        </div>
+    </div>
+    <div class="hidden">
+        <p>Press Record to track mouse movements and scrolling.
+            Press Play to view.</p>
+        <button id="record">Record</button>
+        <button id="play" disabled="disabled">Play</button>
+    </div>
+
+    <img id="cursor" src="https://cdn1.iconfinder.com/data/icons/CrystalClear/22x22/actions/14_select.png"
+         style="position:absolute; display:none;"/>
+</div>
+<div style="height:40px"></div>
+
+<script src="https://code.jquery.com/jquery-1.7.0.js"></script>
+<script src="jquery.nearest.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyC364eXU-mRkVjAGHDwYpn5D1zOvuAyU94",
+        authDomain: "rational-decisions-90f90.firebaseapp.com",
+        databaseURL: "https://rational-decisions-90f90.firebaseio.com",
+        storageBucket: "rational-decisions-90f90.appspot.com",
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script src="mouse.js"></script>
+<script src="app.js"></script>
+<script src="controllers/project.js"></script>
+</body>
+</html>
